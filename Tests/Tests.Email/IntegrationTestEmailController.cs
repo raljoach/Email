@@ -18,7 +18,7 @@ namespace Tests.Email
             var response = await client.GetAsync("/status");
 
             // Do the verifications
-            Assert.Equal("Service is available", response)
+            Assert.Equal("Service is available", response);
         }
     }
 }

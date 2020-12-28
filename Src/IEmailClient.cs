@@ -5,6 +5,6 @@ namespace Email
 {
     public interface IEmailClient
     {
-        Task Send(EmailData email);
+        Task SendAsync(EmailData email);
     }
 }

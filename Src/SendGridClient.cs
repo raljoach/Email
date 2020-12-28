@@ -1,15 +1,18 @@
 using System;
+using SendGrid;
+using SendGrid.Helpers.Mail;  
+using System.Threading.Tasks;
 
 namespace Email
 {
-    public class SendGridClient : IEmailClient
+    public class SendGridEmailClient : IEmailClient
     {
         private string apiKey;		
-		public class SendGridClient(string apiKey)
+		public SendGridEmailClient(string apiKey)
 		{
 			this.apiKey = apiKey;
 		}
-        public async Task Send(EmailData email)
+        public async Task SendAsync(EmailData email)
         {			            
                 var client = new SendGridClient(apiKey);
                 var from = new EmailAddress(email.FromEmail, email.FromName);

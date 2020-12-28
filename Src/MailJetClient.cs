@@ -10,7 +10,7 @@ namespace Email
     {
 		private string apiKey;
 		private string apiSecret;
-		public class MailJetClient(string apiKey, string apiSecret)
+		public MailJetClient(string apiKey, string apiSecret)
 		{
 			this.apiKey = apiKey;
 			this.apiSecret = apiSecret;
@@ -32,10 +32,10 @@ namespace Email
 		   T13: Bad apiKey, null, empty string, blanks, blanks before after, too long
 		   T14: Bad apiSecret, null, empty string, blanks, blanks before after, too long
 		*/
-        public async Task Send(EmailData email)
+        public async Task SendAsync(EmailData email)
         {
             MailjetClient client = new MailjetClient(apiKey, apiSecret);
-			var recipients = new Jarray();
+			var recipients = new JArray();
 			foreach(var r in email.Recipients)
 			{
 				recipient.Add(
