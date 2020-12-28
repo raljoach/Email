@@ -1,9 +1,10 @@
 using System;
+using System.Threading.Tasks;
 
 namespace Email
 {
     public interface IEmailClient
     {
-        async Task Send(EmailData email);
+        Task Send(EmailData email);
     }
 }
