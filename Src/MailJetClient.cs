@@ -38,9 +38,9 @@ namespace Email
 			var recipients = new JArray();
 			foreach(var r in email.Recipients)
 			{
-				recipient.Add(
+				recipients.Add(
 				new JObject {
-                 {"Email", r}
+                 {"Email", r.Email}
                  }
 				 );
 			}

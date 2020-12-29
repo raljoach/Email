@@ -18,7 +18,7 @@ namespace Email.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("status")]
         public string Status()
         {
             return "Service is available";

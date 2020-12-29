@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Email;
 
 
 namespace Tests.Email
@@ -11,14 +12,19 @@ namespace Tests.Email
 
 
         [Fact]
-        public void StatusTest()
+        public async void StatusTest()
         {
+            // arrange
             var client = factory.CreateClient();
 
-            var response = await client.GetAsync("/status");
+            // act
+            var response = await client.GetAsync("/email/status");            
+            
 
             // Do the verifications
-            Assert.Equal("Service is available", response);
+            Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+            var body = await response.Content.ReadAsStringAsync();
+            Assert.Equal("Service is available", body);
         }
     }
 }
