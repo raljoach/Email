@@ -26,6 +26,19 @@ namespace Tests.Email
             // Act
             var emailClient = new EmailService(emailClients);
             emailClient.Send(new EmailData());
+
+            // Assert
+            VerifyEmailSent(mockEmailClient);
         }
+
+        private void VerifyEmailSent(Mock<IEmailClient> mockEmailClient)
+        {
+            mockEmailClient.Verify(mock => mock.SendAsync(It.IsAny<EmailData>()), Times.Once);
+        }
+
+        /* Test cases
+           T1: Send invokes IEmailClient SendAsync
+           T2: Send fails on first client, invokes SendAsync on next IEmailClient
+        */
     }
 }
